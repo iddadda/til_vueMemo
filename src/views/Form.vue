@@ -20,7 +20,11 @@ const state = reactive({
 });
 
 const submit = () => {
-  httpService.addItem(state.memo);
+  if (route.params.id) {
+    httpService.setItem(state.memo);
+  } else {
+    httpService.addItem(state.memo);
+  }
   alert("저장했습니다.");
   router.push({ path: "/" });
 };
